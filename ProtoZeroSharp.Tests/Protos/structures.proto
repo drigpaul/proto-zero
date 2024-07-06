@@ -1,0 +1,66 @@
+syntax = "proto3";
+package ProtoZeroSharp.Tests;
+
+option csharp_namespace = "ProtoZeroSharp.Tests.Canonical";
+
+message TestMessage
+{
+  uint64 a = 1;
+  int64 b = 2;
+  optional uint32 c = 3;
+  optional string d = 4;
+  repeated string e = 5;
+  repeated SubMessage f = 99999;
+}
+
+message SubMessage
+{
+  uint32 id = 1;
+  optional string name = 2;
+  optional OneOfMessage oneOf = 3;
+}
+
+message OneOfMessage
+{
+  oneof type {
+      MessageScalarTypes scalar = 1;
+      MessageOptionalScalarTypes optionalScalar = 2;
+      MessageRepeatedScalarTypes repeatedScalar = 3;
+  }
+}
+
+message MessageScalarTypes
+{
+  uint32 uint32 = 1;
+  uint64 uint64 = 2;
+  int32 int32 = 3;
+  int64 int64 = 4;
+  float float = 5;
+  double double = 6;
+  string str = 7;
+  bytes bytes = 8;
+}
+
+message MessageOptionalScalarTypes
+{
+  optional uint32 uint32 = 1;
+  optional uint64 uint64 = 2;
+  optional int32 int32 = 3;
+  optional int64 int64 = 4;
+  optional float float = 5;
+  optional double double = 6;
+  optional string str = 7;
+  optional bytes bytes = 8;
+}
+
+message MessageRepeatedScalarTypes
+{
+  repeated uint32 uint32 = 1;
+  repeated uint64 uint64 = 2;
+  repeated int32 int32 = 3;
+  repeated int64 int64 = 4;
+  repeated float float = 5;
+  repeated double double = 6;
+  repeated string str = 7;
+  repeated bytes bytes = 8;
+}
